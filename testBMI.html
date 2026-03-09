@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BMI Checker</title>
+</head>
+
+<body>
+
+  <h2>JavaScript Revision: BMI Checker</h2>
+
+  <!-- this is where JavaScript will write the result -->
+  <p id="output"></p>
+
+  <script>
+
+   // 1. Create a function named checkBMI()
+   function checkBMI()
+   {  
+        // LOOPING START
+        while (true)
+        {
+            // 2a) Declare variables with user input
+            var name;
+            var weight;
+            var height;
+            var category;   // declare without initialization value
+
+            // b) Calculate BMI using formula
+            var bmi = weight / (height * height);
+
+            // c) Determine BMI category using if...else
+            if (bmi >= 30)
+            {
+                category = "Obese";
+            }
+            else if (bmi >= 25)
+            {
+                category = "Overweight";
+            }
+            else if (bmi >= 18.5)
+            {
+                category = "Normal";
+            }
+            else
+            {
+                category = "Underweight";
+            }
+
+            // d) Add result
+            result +=
+                  "Name: " + name + "<br>" +
+                  "Weight: " + weight + " kg<br>" +
+                  "Height: " + height + " m<br>" +
+                  "BMI: " + bmi.toFixed(2) + "<br>" +
+                  "Category: " + category +
+                  "<hr>";
+
+            // Ask user if want to continue
+            repeat = "Do you want to calculate again? (yes/no)";
+        }
+        // LOOPING END
+
+        // Display all results
+        document.getElementById("output").innerHTML = result;
+   }
+
+   // 3. Call the function when the page loads
+   checkBMI();
+
+  </script>
+
+</body>
+</html>
