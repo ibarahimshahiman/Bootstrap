@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Event Handling</title>
+    <style>
+        body {
+        font-family: Arial;
+        margin: 30px;
+        }
+
+        input {
+        padding: 5px;
+        margin: 5px 0;
+        width: 250px;
+        }
+
+        button {
+        padding: 6px 12px;
+        margin-right: 10px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        }
+
+        #submitBtn {
+        background-color: lightgreen;
+        }
+
+        #submitBtn:hover {
+        background-color: limegreen;
+        color: white;
+        }
+
+        #resetBtn {
+        background-color: lightcoral;
+        }
+
+        #resetBtn:hover {
+            background-color: crimson;
+            color: white;
+        }
+    </style>
+</head>
+<body> 
+    <h2> JavaScript Event Handling Example</h2>
+
+    <form onsubmit="return checkForm()">
+        <label>Your Name: </label><br>
+            <input type="text" id="nameBox"
+            onfocus="highlight (this)"
+            onblur="removeHighlight (this)"
+            placeholder="Enter your name"><br>
+
+        <label>Your Email:</label><br>
+            <input type="email" id="emailBox"
+            onfocus="highlight (this)"
+            onblur="removeHighlight (this)"
+            placeholder="Enter your email"><br><br>
+
+        <button type="submit" id="submitBtn" onclick="sayHello()">Submit</button>
+        <button type="button" id="resetBtn" onclick="resetForm()">Reset</button>
+    </form>
+
+    <p id="message"></p>
+
+    <script>
+        //onfocus event - highlight input field when focused 
+        function highlight (x) {
+            x.style.backgroundColor = "lightyellow";
+        }
+
+        //onblur event - remove highlight when user clicks away
+        function removeHighlight (x) {
+            x.style.backgroundColor = "white";
+        }
+
+        //onclick event - show a simple message when submit button clicked
+        function sayHello() {
+            document.getElementById("message").innerText="Submit button clicked!";
+        }
+
+        //onsubmit event - validate form before submission
+        function checkForm() {
+            let name = document.getElementById("nameBox").value;
+            let email = document.getElementById("emailBox").value;
+
+            if (name === "" || email === "") {
+                alert("Please fill in both name and email!");
+                return false; // stop form from submitting
+            } else {
+                alert("Form submitted successfully! Hello " + name + " ");
+                return true; // allow submission
+            }
+        }
+
+        //onclick event for Reset button
+        function resetForm() {
+            document.getElementById("nameBox").value = "";
+            document.getElementById("emailBox").value = "";
+            document.getElementById("message").innerText = "Form has been reset.";
+        }
+    </script>
+</body>
+</html>
